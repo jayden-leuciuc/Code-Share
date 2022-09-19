@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
-
-interface PreviewProps{
-    code: string;
+import { useEffect, useRef } from 'react';
+import './preview.css'
+interface PreviewProps {
+  code: string;
 }
 
 const html = `
@@ -26,20 +26,23 @@ const html = `
   </html>
   `;
 
-const Preview: React.FC<PreviewProps> = ({code}) => {
-    const iframe = useRef<any>();
+const Preview: React.FC<PreviewProps> = ({ code }) => {
+  const iframe = useRef<any>();
 
-    useEffect(() => {
-      iframe.current.srcdoc = html;
-      iframe.current.contentWindow.postMessage(code, '*');
-    }, [code])
-    
+  useEffect(() => {
+    iframe.current.srcdoc = html;
+    iframe.current.contentWindow.postMessage(code, '*');
+  }, [code]);
+
   return (
-    <iframe 
-    title="preview"
-    ref={iframe}
-    srcDoc={html}
-    sandbox="allow-scripts"/>
-  )
-}
-export default Preview
+    <div className="preview-wrapper">
+      <iframe
+        title="preview"
+        ref={iframe}
+        srcDoc={html}
+        sandbox="allow-scripts"
+      />
+    </div>
+  );
+};
+export default Preview;

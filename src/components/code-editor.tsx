@@ -42,7 +42,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({initialValue, onChange}) => {
         editorDidMount={onEditorDidMount}
         value={initialValue}
         theme="vs-dark"
-        height={500}
+        height="100%"
         language="javascript"
         options={{
           minimap: {
